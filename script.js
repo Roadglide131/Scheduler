@@ -34,4 +34,3 @@ $(document).ready(function () {
     localStorage.setItem(parent.attr("id"), value);
   });
 });
-I need readme for assignment okay to paste in?
