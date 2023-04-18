@@ -17,7 +17,9 @@ $(document).ready(function () {
         : "past"
     }">
   <div class="col-2 col-md-1 hour text-center py-3">${am_pm}</div>
-  <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
+  <textarea class="col-8 col-md-10 description" rows="3"> ${
+    localStorage.getItem(international_time) || ""
+  }</textarea>
   <button class="btn saveBtn col-2 col-md-1" aria-label="save">
     <i class="fas fa-save" aria-hidden="true"></i>
   </button>
@@ -25,4 +27,10 @@ $(document).ready(function () {
     $("#time_container").append(formattedTimeBlock);
     start = start.add(1, "hour");
   }
+  $("button").click(function () {
+    let parent = $(this).parent();
+    let value = parent.find("textarea").val();
+    console.log(parent, value);
+    localStorage.setItem(parent.attr("id"), value);
+  });
 });
